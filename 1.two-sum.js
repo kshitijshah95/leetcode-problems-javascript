@@ -13,14 +13,14 @@
 var twoSum = function (nums, target) {
   let cache = new Map();
 
-  for (let el of nums) {
-    if (!cache.has(el)) {
-      cache.set(el, target - el);
+  for (let i = 0; i < nums.length; i++) {
+    if (!cache.has(target - nums[i])) {
+      cache.set(nums[i], i);
     } else {
-      let secondNum = cache.get(el);
-      if (secondNum === target - el) return [el, secondNum];
+      return [cache.get(target - nums[i]), i];
     }
   }
-  return;
+
+  return [];
 };
 // @lc code=end
